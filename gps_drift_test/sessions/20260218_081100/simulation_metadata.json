@@ -1,0 +1,84 @@
+{
+  "data_type": "SIMULATED",
+  "is_real_measurement": false,
+  "session": "20260218_081100",
+  "seed": 20260928,
+  "duration_s": 240,
+  "sample_rate_hz": 0.5,
+  "sample_count": 121,
+  "synthetic_start_utc": "2026-02-18T13:11:00+00:00",
+  "synthetic_start_local": "2026-02-18T08:11:00-05:00",
+  "min_altitude_drift_m": -4.351759,
+  "max_altitude_drift_m": 4.794758,
+  "rms_altitude_drift_from_start_m": 2.594282116934137,
+  "mean_abs_altitude_step_m": 1.5257962750000005,
+  "max_horizontal_radius_m": 1.9309878003478433,
+  "horizontal_rms_about_centroid_m": 1.0241326062603555,
+  "mean_horizontal_radius_m": 0.9289326640407282,
+  "model": {
+    "model": "Nonperiodic regime-changing AR(1) wander, white jitter and decaying random bursts; smooth tanh bound",
+    "model_version": 2,
+    "persistence_per_sample": 0.7374789052448929,
+    "innovation_sigma_m": 1.1052051255562274,
+    "measurement_jitter_sigma_m": 0.6910575183173028,
+    "burst_probability_per_sample": 0.14049841334508134,
+    "burst_decay_per_sample": 0.3079866074286898,
+    "regimes": [
+      {
+        "start_s": 2.0,
+        "bias_m": 1.6028185791420704,
+        "volatility": 1.517003420119249
+      },
+      {
+        "start_s": 34.0,
+        "bias_m": -2.446754905169461,
+        "volatility": 1.4756971140384039
+      },
+      {
+        "start_s": 64.0,
+        "bias_m": -0.6665332407713662,
+        "volatility": 0.6576903920100483
+      },
+      {
+        "start_s": 78.0,
+        "bias_m": 1.1413559330000584,
+        "volatility": 0.7230629943809852
+      },
+      {
+        "start_s": 100.0,
+        "bias_m": 1.698391700645141,
+        "volatility": 1.1660163453958012
+      },
+      {
+        "start_s": 124.0,
+        "bias_m": -0.4268503273687707,
+        "volatility": 0.7526314045805156
+      },
+      {
+        "start_s": 142.0,
+        "bias_m": 0.2552593177303617,
+        "volatility": 0.8345698865674711
+      },
+      {
+        "start_s": 174.0,
+        "bias_m": -1.543090711429446,
+        "volatility": 1.1611157445595754
+      },
+      {
+        "start_s": 198.0,
+        "bias_m": -0.7490932578158893,
+        "volatility": 1.0950925404122116
+      },
+      {
+        "start_s": 222.0,
+        "bias_m": 2.2561875130644156,
+        "volatility": 1.1420918365689168
+      }
+    ],
+    "bound_m": 4.9,
+    "tanh_scale_m": 3.4,
+    "baseline_alt_m": 100.0,
+    "synthetic_reference_lat_deg": 30.0,
+    "synthetic_reference_lon_deg": 120.0
+  }
+}

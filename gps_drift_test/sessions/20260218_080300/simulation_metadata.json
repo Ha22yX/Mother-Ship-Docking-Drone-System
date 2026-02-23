@@ -1,0 +1,64 @@
+{
+  "data_type": "SIMULATED",
+  "is_real_measurement": false,
+  "session": "20260218_080300",
+  "seed": 20260926,
+  "duration_s": 160,
+  "sample_rate_hz": 0.5,
+  "sample_count": 81,
+  "synthetic_start_utc": "2026-02-18T13:03:00+00:00",
+  "synthetic_start_local": "2026-02-18T08:03:00-05:00",
+  "min_altitude_drift_m": -4.528788,
+  "max_altitude_drift_m": 3.67284,
+  "rms_altitude_drift_from_start_m": 2.64937630965446,
+  "mean_abs_altitude_step_m": 1.4664817500000007,
+  "max_horizontal_radius_m": 1.8124183206481868,
+  "horizontal_rms_about_centroid_m": 0.869340638696709,
+  "mean_horizontal_radius_m": 0.8733895698339778,
+  "model": {
+    "model": "Nonperiodic regime-changing AR(1) wander, white jitter and decaying random bursts; smooth tanh bound",
+    "model_version": 2,
+    "persistence_per_sample": 0.6145816997384699,
+    "innovation_sigma_m": 0.7071163584577259,
+    "measurement_jitter_sigma_m": 0.5301624495360446,
+    "burst_probability_per_sample": 0.12044856300560225,
+    "burst_decay_per_sample": 0.3462065406649793,
+    "regimes": [
+      {
+        "start_s": 2.0,
+        "bias_m": -0.7204386564067216,
+        "volatility": 1.3415737533713865
+      },
+      {
+        "start_s": 32.0,
+        "bias_m": -2.4664461962057995,
+        "volatility": 1.4661326967132307
+      },
+      {
+        "start_s": 62.0,
+        "bias_m": 2.5181535802667447,
+        "volatility": 1.0288501101122276
+      },
+      {
+        "start_s": 94.0,
+        "bias_m": -2.191643160716122,
+        "volatility": 1.1869393310348788
+      },
+      {
+        "start_s": 104.0,
+        "bias_m": -0.4787208796375091,
+        "volatility": 1.3938711608741405
+      },
+      {
+        "start_s": 138.0,
+        "bias_m": -2.197513862606791,
+        "volatility": 1.2254280140647453
+      }
+    ],
+    "bound_m": 4.9,
+    "tanh_scale_m": 3.4,
+    "baseline_alt_m": 100.0,
+    "synthetic_reference_lat_deg": 30.0,
+    "synthetic_reference_lon_deg": 120.0
+  }
+}
