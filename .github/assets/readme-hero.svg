@@ -1,0 +1,51 @@
+<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Mother-ship docking relative localization overview</title>
+  <desc id="desc">A minimal diagram showing mother UAV anchors, child UAV tag, sensor fusion, and PX4 control.</desc>
+  <rect width="1200" height="420" rx="34" fill="#07111F"/>
+  <rect x="36" y="36" width="1128" height="348" rx="28" fill="#0D1726" stroke="#22344C"/>
+
+  <g transform="translate(120 92)">
+    <text x="180" y="0" text-anchor="middle" fill="#DDEBFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Mother UAV</text>
+    <path d="M180 82L95 122H265L180 82Z" fill="#14243A" stroke="#73D2FF" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M180 82V32" stroke="#73D2FF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M92 122H44M268 122H316" stroke="#73D2FF" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="44" cy="122" r="16" fill="#73D2FF"/>
+    <circle cx="316" cy="122" r="16" fill="#73D2FF"/>
+    <circle cx="180" cy="32" r="16" fill="#73D2FF"/>
+    <circle cx="180" cy="172" r="16" fill="#73D2FF"/>
+    <rect x="130" y="105" width="100" height="64" rx="14" fill="#101D2F" stroke="#F5C26B" stroke-width="3"/>
+    <path d="M145 121H215M145 137H215M145 153H215" stroke="#F5C26B" stroke-width="3" stroke-linecap="round"/>
+    <text x="180" y="222" text-anchor="middle" fill="#94A9C4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">4 UWB anchors + docking frame</text>
+  </g>
+
+  <g transform="translate(730 116)">
+    <text x="165" y="-24" text-anchor="middle" fill="#DDEBFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Child UAV</text>
+    <path d="M165 72L94 110H236L165 72Z" fill="#14243A" stroke="#9FE6C8" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M165 72V30" stroke="#9FE6C8" stroke-width="4" stroke-linecap="round"/>
+    <path d="M92 110H46M238 110H284" stroke="#9FE6C8" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="46" cy="110" r="14" fill="#9FE6C8"/>
+    <circle cx="284" cy="110" r="14" fill="#9FE6C8"/>
+    <circle cx="165" cy="30" r="14" fill="#9FE6C8"/>
+    <circle cx="165" cy="150" r="14" fill="#9FE6C8"/>
+    <circle cx="165" cy="111" r="22" fill="#0D1726" stroke="#F5C26B" stroke-width="4"/>
+    <text x="165" y="200" text-anchor="middle" fill="#94A9C4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">UWB tag + vision</text>
+  </g>
+
+  <path d="M474 210C565 150 675 150 754 210" stroke="#73D2FF" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round"/>
+  <path d="M474 236C565 292 675 292 754 236" stroke="#9FE6C8" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round"/>
+
+  <g transform="translate(490 268)">
+    <rect width="220" height="74" rx="18" fill="#111F33" stroke="#344E70"/>
+    <text x="110" y="32" text-anchor="middle" fill="#DDEBFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Relative State</text>
+    <text x="110" y="56" text-anchor="middle" fill="#94A9C4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16">x, y, z + velocity</text>
+  </g>
+
+  <g transform="translate(490 82)">
+    <rect width="220" height="74" rx="18" fill="#111F33" stroke="#344E70"/>
+    <text x="110" y="32" text-anchor="middle" fill="#DDEBFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Sensor Fusion</text>
+    <text x="110" y="56" text-anchor="middle" fill="#94A9C4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16">GPS, UWB, AprilTag</text>
+  </g>
+
+  <path d="M600 158V257" stroke="#F5C26B" stroke-width="4" stroke-linecap="round"/>
+  <path d="M584 244L600 260L616 244" stroke="#F5C26B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
