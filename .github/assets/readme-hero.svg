@@ -1,51 +1,86 @@
-<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Mother-ship docking relative localization overview</title>
-  <desc id="desc">A minimal diagram showing mother UAV anchors, child UAV tag, sensor fusion, and PX4 control.</desc>
-  <rect width="1200" height="420" rx="34" fill="#07111F"/>
-  <rect x="36" y="36" width="1128" height="348" rx="28" fill="#0D1726" stroke="#22344C"/>
+<svg width="1120" height="420" viewBox="0 0 1120 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Mother-Ship Docking Drone System visual overview</title>
+  <desc id="desc">A visual overview of a dual-UAV docking system using GPS, UWB relative localization, AprilTag vision, and PX4 control.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1120" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7FAF5"/>
+      <stop offset="0.52" stop-color="#EFF6F0"/>
+      <stop offset="1" stop-color="#FEFCF6"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="92" y1="76" x2="982" y2="358" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F8FBF7"/>
+    </linearGradient>
+    <filter id="shadow" x="34" y="18" width="1052" height="386" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="24"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.12 0 0 0 0 0.22 0 0 0 0 0.18 0 0 0 0.14 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
 
-  <g transform="translate(120 92)">
-    <text x="180" y="0" text-anchor="middle" fill="#DDEBFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Mother UAV</text>
-    <path d="M180 82L95 122H265L180 82Z" fill="#14243A" stroke="#73D2FF" stroke-width="4" stroke-linejoin="round"/>
-    <path d="M180 82V32" stroke="#73D2FF" stroke-width="4" stroke-linecap="round"/>
-    <path d="M92 122H44M268 122H316" stroke="#73D2FF" stroke-width="4" stroke-linecap="round"/>
-    <circle cx="44" cy="122" r="16" fill="#73D2FF"/>
-    <circle cx="316" cy="122" r="16" fill="#73D2FF"/>
-    <circle cx="180" cy="32" r="16" fill="#73D2FF"/>
-    <circle cx="180" cy="172" r="16" fill="#73D2FF"/>
-    <rect x="130" y="105" width="100" height="64" rx="14" fill="#101D2F" stroke="#F5C26B" stroke-width="3"/>
-    <path d="M145 121H215M145 137H215M145 153H215" stroke="#F5C26B" stroke-width="3" stroke-linecap="round"/>
-    <text x="180" y="222" text-anchor="middle" fill="#94A9C4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">4 UWB anchors + docking frame</text>
+  <rect width="1120" height="420" rx="34" fill="url(#bg)"/>
+  <path d="M0 328C142 277 235 343 365 292C512 235 588 258 712 291C846 327 973 304 1120 238V420H0V328Z" fill="#E7F0EA" opacity="0.72"/>
+
+  <g filter="url(#shadow)">
+    <rect x="72" y="54" width="976" height="312" rx="24" fill="url(#panel)" stroke="#D9E4DA"/>
   </g>
 
-  <g transform="translate(730 116)">
-    <text x="165" y="-24" text-anchor="middle" fill="#DDEBFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Child UAV</text>
-    <path d="M165 72L94 110H236L165 72Z" fill="#14243A" stroke="#9FE6C8" stroke-width="4" stroke-linejoin="round"/>
-    <path d="M165 72V30" stroke="#9FE6C8" stroke-width="4" stroke-linecap="round"/>
-    <path d="M92 110H46M238 110H284" stroke="#9FE6C8" stroke-width="4" stroke-linecap="round"/>
-    <circle cx="46" cy="110" r="14" fill="#9FE6C8"/>
-    <circle cx="284" cy="110" r="14" fill="#9FE6C8"/>
-    <circle cx="165" cy="30" r="14" fill="#9FE6C8"/>
-    <circle cx="165" cy="150" r="14" fill="#9FE6C8"/>
-    <circle cx="165" cy="111" r="22" fill="#0D1726" stroke="#F5C26B" stroke-width="4"/>
-    <text x="165" y="200" text-anchor="middle" fill="#94A9C4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">UWB tag + vision</text>
+  <rect x="96" y="78" width="212" height="264" rx="18" fill="#111A17"/>
+  <rect x="120" y="104" width="48" height="48" rx="12" fill="#E9F2EC"/>
+  <path d="M124 134H164M130 134L144 116L158 134" stroke="#205A4B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M144 116V144" stroke="#205A4B" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="120" y="184" fill="#FFFFFF" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22" font-weight="700">Docking Console</text>
+  <text x="120" y="212" fill="#B9C9C2" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13">Relative pose, sensors, PX4</text>
+  <rect x="120" y="242" width="164" height="42" rx="11" fill="#205A4B"/>
+  <text x="144" y="268" fill="#FFFFFF" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700">Localization Desk</text>
+  <rect x="120" y="296" width="114" height="16" rx="8" fill="#DCE8E1" opacity="0.36"/>
+
+  <g>
+    <rect x="344" y="86" width="190" height="92" rx="16" fill="#FFFDFC" stroke="#E6CFC6"/>
+    <rect x="364" y="108" width="38" height="38" rx="10" fill="#F6E7E1"/>
+    <path d="M374 133C383 119 390 119 398 133" stroke="#C75B45" stroke-width="2.3" stroke-linecap="round"/>
+    <circle cx="383" cy="134" r="3.8" fill="#C75B45"/>
+    <text x="418" y="122" fill="#67746E" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13">Far approach</text>
+    <text x="418" y="154" fill="#101614" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="26" font-weight="800">GPS</text>
+
+    <rect x="552" y="86" width="190" height="92" rx="16" fill="#FFFDFC" stroke="#D8D7EB"/>
+    <rect x="572" y="108" width="38" height="38" rx="10" fill="#ECEBF6"/>
+    <circle cx="591" cy="127" r="6" fill="#6B69A6"/>
+    <path d="M579 127C583 116 599 116 603 127M579 127C583 138 599 138 603 127" stroke="#6B69A6" stroke-width="2" stroke-linecap="round"/>
+    <text x="626" y="122" fill="#67746E" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13">Mid range</text>
+    <text x="626" y="154" fill="#101614" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="26" font-weight="800">UWB</text>
+
+    <rect x="760" y="86" width="190" height="92" rx="16" fill="#FFFDFC" stroke="#DCE6E1"/>
+    <rect x="780" y="108" width="38" height="38" rx="10" fill="#EAF1EE"/>
+    <rect x="789" y="118" width="20" height="20" rx="2" stroke="#1F6A58" stroke-width="2.2"/>
+    <path d="M793 122H805M793 134H805M793 122V134M805 122V134" stroke="#1F6A58" stroke-width="1.6"/>
+    <text x="834" y="122" fill="#67746E" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13">Final align</text>
+    <text x="834" y="154" fill="#7A8580" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="26" font-weight="800">AprilTag</text>
   </g>
 
-  <path d="M474 210C565 150 675 150 754 210" stroke="#73D2FF" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round"/>
-  <path d="M474 236C565 292 675 292 754 236" stroke="#9FE6C8" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round"/>
-
-  <g transform="translate(490 268)">
-    <rect width="220" height="74" rx="18" fill="#111F33" stroke="#344E70"/>
-    <text x="110" y="32" text-anchor="middle" fill="#DDEBFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Relative State</text>
-    <text x="110" y="56" text-anchor="middle" fill="#94A9C4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16">x, y, z + velocity</text>
+  <g>
+    <rect x="344" y="206" width="362" height="104" rx="16" fill="#FFFFFF" stroke="#DCE6DF"/>
+    <circle cx="370" cy="235" r="4" fill="#205A4B"/>
+    <text x="388" y="239" fill="#17201C" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" font-weight="800">Relative position</text>
+    <text x="388" y="266" fill="#6A766F" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13">Child drone estimates x, y, z in mother frame.</text>
+    <rect x="388" y="282" width="96" height="14" rx="7" fill="#EAF2EE"/>
+    <rect x="494" y="282" width="74" height="14" rx="7" fill="#F1F4F0"/>
+    <rect x="344" y="324" width="300" height="18" rx="9" fill="#DFEAE4"/>
   </g>
 
-  <g transform="translate(490 82)">
-    <rect width="220" height="74" rx="18" fill="#111F33" stroke="#344E70"/>
-    <text x="110" y="32" text-anchor="middle" fill="#DDEBFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Sensor Fusion</text>
-    <text x="110" y="56" text-anchor="middle" fill="#94A9C4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16">GPS, UWB, AprilTag</text>
+  <g>
+    <rect x="734" y="206" width="262" height="104" rx="16" fill="#F8FBF7" stroke="#DCE6DF"/>
+    <text x="758" y="235" fill="#205A4B" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="800">PX4 setpoint</text>
+    <text x="758" y="263" fill="#1A211E" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="700">Fused pose becomes a low-speed</text>
+    <text x="758" y="285" fill="#1A211E" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="700">approach and docking command.</text>
   </g>
 
-  <path d="M600 158V257" stroke="#F5C26B" stroke-width="4" stroke-linecap="round"/>
-  <path d="M584 244L600 260L616 244" stroke="#F5C26B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M662 238C684 238 694 238 716 238" stroke="#205A4B" stroke-width="3" stroke-linecap="round"/>
+  <path d="M708 230L718 238L708 246" stroke="#205A4B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M500 178C512 196 524 199 548 202" stroke="#6B69A6" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 8"/>
+  <path d="M844 178C836 194 831 199 810 204" stroke="#6B69A6" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 8"/>
 </svg>
