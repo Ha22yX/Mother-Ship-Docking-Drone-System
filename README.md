@@ -1,10 +1,43 @@
-# Mother-Ship Docking Drone System
+<div align="center">
+  <h1>Mother-Ship Docking Drone System</h1>
+  <p>My project exploring how GPS, UWB, and vision can work together for relative positioning and drone docking.</p>
 
-[简体中文](README.zh-CN.md) · [Project website](https://isef.rosebeg.com)
+  <p>
+    <a href="README.zh-CN.md">Chinese</a>
+    &middot;
+    <a href="https://isef.rosebeg.com">Project Website</a>
+    &middot;
+    <a href="https://github.com/Ha22yX/UWB-Project">UWB Module</a>
+    &middot;
+    <a href="https://github.com/Ha22yX/OpenMV-AprilTag">Vision Module</a>
+  </p>
+
+  <p>
+    <img alt="Python: experiments" src="https://img.shields.io/badge/Python-experiments-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+    <img alt="PX4 / MAVLink: routing" src="https://img.shields.io/badge/PX4%20/%20MAVLink-routing-2f6f67?style=for-the-badge" />
+    <img alt="UWB: relative position" src="https://img.shields.io/badge/UWB-relative%20position-287866?style=for-the-badge" />
+    <img alt="AprilTag: terminal vision" src="https://img.shields.io/badge/AprilTag-terminal%20vision-7d73b7?style=for-the-badge" />
+    <img alt="Status: incomplete prototype" src="https://img.shields.io/badge/Status-incomplete%20prototype-b7791f?style=for-the-badge" />
+  </p>
+</div>
+
+<p align="center">
+  <img src=".github/assets/readme-hero.svg" alt="Mother-Ship Docking Drone System overview: GPS, UWB, and vision for mother-frame relative positioning" width="100%" />
+</p>
 
 I am building a system that would let a smaller drone approach and dock with a larger “mother” drone in the air. This repository records my hardware, code, and experiments as I work toward that goal.
 
 **Current status:** I have completed the theoretical work and validation of the underlying principles. I have assembled the hardware and carried out preliminary flight tests, including a test with the two drones connected before takeoff. The complete autonomous approach and docking sequence is still unfinished.
+
+## Why I started this project
+
+I have thought drones were cool since I was a kid. I wanted to turn that interest into something I could design, build, and test myself, and getting two drones to meet and dock in the air gave me a problem I wanted to work on.
+
+The question that drew me in was how to get an accurate relative position estimate over a wide range of distances. For the docking system I want to build, relying on a single sensing method makes it difficult to balance coverage, precision, and reliability.
+
+GPS offers wide outdoor coverage, but ordinary GPS alone does not provide the precision I need for close docking. [RTK can improve GNSS accuracy](https://www.u-blox.com/en/technologies/rtk-real-time-kinematic) with correction data and suitable signal conditions. UWB and AprilTag vision can provide more precise local measurements for this task, but UWB needs the drone to stay within the anchors' useful range, and the camera needs a clear view of the marker at a usable distance.
+
+That is why I want to combine these methods: satellite positioning for the wider approach, UWB for relative positioning as the drones get closer, and vision for the final alignment. My goal is to explore how sensor fusion can keep the relative position estimate useful across those stages, using drone docking as the application. It connects a positioning problem I want to solve with something I have enjoyed since childhood.
 
 ## What I am trying to build
 
@@ -101,7 +134,7 @@ UDP_MAVLink_Comm_Test.py         Bidirectional MAVLink communication test
 serial_px4_udp_router.py         Serial-to-UDP bridge for the flight controller
 gps_drift_test/                  GPS recording and plotting tools
 hardware/solidworks/             My SolidWorks source files
-.github/assets/                 Prototype, assembly, and flight-test photos
+.github/assets/                 SVG overview and prototype, assembly, and flight-test photos
 requirement.txt                 Python dependencies
 ```
 

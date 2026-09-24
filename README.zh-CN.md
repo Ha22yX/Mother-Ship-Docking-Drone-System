@@ -1,10 +1,43 @@
-# 母机与子无人机空中对接项目
+<div align="center">
+  <h1>Mother-Ship Docking Drone System</h1>
+  <p>我的双无人机对接项目：探索如何结合 GPS、UWB 和视觉，实现相对定位与空中对接。</p>
 
-[English](README.md) · [项目网站](https://isef.rosebeg.com)
+  <p>
+    <a href="README.md">English</a>
+    &middot;
+    <a href="https://isef.rosebeg.com">项目网站</a>
+    &middot;
+    <a href="https://github.com/Ha22yX/UWB-Project">UWB 模块</a>
+    &middot;
+    <a href="https://github.com/Ha22yX/OpenMV-AprilTag">视觉模块</a>
+  </p>
+
+  <p>
+    <img alt="Python: experiments" src="https://img.shields.io/badge/Python-experiments-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+    <img alt="PX4 / MAVLink: routing" src="https://img.shields.io/badge/PX4%20/%20MAVLink-routing-2f6f67?style=for-the-badge" />
+    <img alt="UWB: relative position" src="https://img.shields.io/badge/UWB-relative%20position-287866?style=for-the-badge" />
+    <img alt="AprilTag: terminal vision" src="https://img.shields.io/badge/AprilTag-terminal%20vision-7d73b7?style=for-the-badge" />
+    <img alt="状态：尚未完成的原型" src="https://img.shields.io/badge/Status-incomplete%20prototype-b7791f?style=for-the-badge" />
+  </p>
+</div>
+
+<p align="center">
+  <img src=".github/assets/readme-hero.svg" alt="项目概览：结合 GPS、UWB 和视觉，获取子无人机相对母机的位置" width="100%" />
+</p>
 
 我想做一个系统，让一架较小的子无人机在空中接近并对接到较大的“母机”上。这个仓库记录了我为此做的硬件、程序和实验。
 
 **当前进度：** 理论工作和相关原理验证已经完成。我已经组装了实体原型，也做过初步飞行测试，包括把两架无人机提前连接后一起起飞的测试。完整的自主接近和空中对接流程仍未完成。
+
+## 为什么做这个项目
+
+我从小就觉得无人机很酷，也一直很喜欢无人机。我想把这个兴趣变成一个能自己设计、组装和测试的项目，于是选择了让两架无人机在空中相互接近并完成对接。
+
+吸引我的一个问题是：能不能在较大的距离范围内，持续获得足够准确的相对位置？对于我想做的对接系统，单靠一种定位方式，很难同时兼顾覆盖范围、精度和可靠性。
+
+GPS 的室外覆盖范围很广，但普通 GPS 本身的精度还不够满足近距离对接的需要。[RTK 可以提高 GNSS 定位精度](https://www.u-blox.com/en/technologies/rtk-real-time-kinematic)，但也需要修正数据和合适的信号条件。UWB 和 AprilTag 视觉可以为这个任务提供更精细的局部测量，不过 UWB 需要在锚点的有效测距范围内工作，摄像头也需要在合适的距离内清楚地看到标记。
+
+所以我想把这几种方法结合起来：远距离接近时使用卫星定位，靠近后用 UWB 获取相对位置，最后用视觉进一步对准。我的目标是探索多传感器融合，让相对位置估计在这些阶段都能派上用场，再把它应用到无人机对接上。这个项目既有我想解决的定位问题，也和我从小的兴趣有关，所以我很喜欢做它。
 
 ## 我想实现什么
 
@@ -101,7 +134,7 @@ UDP_MAVLink_Comm_Test.py         MAVLink 双向通信测试
 serial_px4_udp_router.py         飞控串口与 UDP 之间的桥接
 gps_drift_test/                  GPS 数据记录与绘图工具
 hardware/solidworks/             我的 SolidWorks 源文件
-.github/assets/                 原型、组装和飞行测试照片
+.github/assets/                 SVG 概览图，以及原型、组装和飞行测试照片
 requirement.txt                 Python 依赖
 ```
 
