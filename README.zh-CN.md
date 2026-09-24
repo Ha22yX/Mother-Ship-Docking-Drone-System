@@ -17,9 +17,12 @@
     <img alt="PX4 / MAVLink: routing" src="https://img.shields.io/badge/PX4%20/%20MAVLink-routing-2f6f67?style=for-the-badge" />
     <img alt="UWB: relative position" src="https://img.shields.io/badge/UWB-relative%20position-287866?style=for-the-badge" />
     <img alt="AprilTag: terminal vision" src="https://img.shields.io/badge/AprilTag-terminal%20vision-7d73b7?style=for-the-badge" />
-    <img alt="Status: research prototype" src="https://img.shields.io/badge/Status-research%20prototype-6b7f73?style=for-the-badge" />
+    <img alt="状态：尚未完成的原型" src="https://img.shields.io/badge/Status-incomplete%20prototype-b7791f?style=for-the-badge" />
   </p>
 </div>
+
+> [!IMPORTANT]
+> **理论验证已完成；完整系统的实机飞行与对接验证尚未完成。** 项目已多次尝试飞行，但均未成功。当前 RTK-GPS 软件环境中的高度数据不稳定，阻碍了安全开展对接实验。详见[当前进展与阻塞问题](#当前进展与阻塞问题)。
 
 <p align="center">
   <img src=".github/assets/readme-hero.svg" alt="Mother-Ship Docking Drone System 项目概览图" width="100%" />
@@ -37,9 +40,32 @@
 
 核心技术问题是 **相对位置获取**。子无人机不能只依赖全局 GPS 坐标完成对接。它需要知道自己在母机局部对接坐标系中的位置，再把这个相对状态转成 PX4/MAVLink 可用的安全控制实验。
 
+## 当前进展与阻塞问题
+
+项目的理论工作及相关原理验证均已完成，实体原型已搭建，并已进行多次飞行测试尝试。但这些飞行尝试均未成功，**目前尚未成功完成自主空中对接**。项目仍处于尚未完成的研究原型阶段。
+
+| 内容 | 当前状态 |
+| --- | --- |
+| 理论设计与验证 | 已完成。 |
+| 实体原型 | 已搭建；仓库包含原型照片和 CAD 源文件。 |
+| 完整系统的实机飞行验证 | 已多次尝试飞行，但均未成功，验证尚未完成。 |
+| 自主空中对接 | 尚未实现；实验受高度数据不稳定问题阻塞。 |
+
+### 高度数据不稳定
+
+当前阻塞来自本项目使用的既有开源 RTK-GPS 软件环境中的高度数据不稳定问题。在静止测试中，**无人机没有移动时，GPS 报告的高度仍会出现约 ±5 米的跳动**。这种不稳定使接近和对接实验无法安全进行，也阻碍了实机飞行验证的完成。
+
+仓库包含 [GPS 漂移记录与绘图工具](gps_drift_test/GPS_Drift_Logger.py)，用于记录位置数据并观察高度变化。理论验证完成并不代表完整系统已通过实机验证；高度数据问题和整机飞行验证仍待解决。
+
+### 后续工作
+
+1. 解决高度数据不稳定问题，并在静止测试和受控飞行测试中验证高度读数的稳定性。
+2. 在高度问题解决后，继续开展整机接近与对接实验。
+3. 完成并记录完整飞行与对接流程的成功验证，再将项目标记为完成。
+
 ## 核心思路：先解决相对位置
 
-对接系统被拆成分阶段的定位链路：
+系统设计采用以下分阶段定位链路。这是预期的对接流程，完整流程尚未通过实机飞行验证。
 
 | 阶段 | 传感器 / 方法 | 目的 | 输出 |
 | --- | --- | --- | --- |

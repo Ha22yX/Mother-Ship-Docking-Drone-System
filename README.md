@@ -17,9 +17,12 @@
     <img alt="PX4 / MAVLink: routing" src="https://img.shields.io/badge/PX4%20/%20MAVLink-routing-2f6f67?style=for-the-badge" />
     <img alt="UWB: relative position" src="https://img.shields.io/badge/UWB-relative%20position-287866?style=for-the-badge" />
     <img alt="AprilTag: terminal vision" src="https://img.shields.io/badge/AprilTag-terminal%20vision-7d73b7?style=for-the-badge" />
-    <img alt="Status: research prototype" src="https://img.shields.io/badge/Status-research%20prototype-6b7f73?style=for-the-badge" />
+    <img alt="Status: incomplete prototype" src="https://img.shields.io/badge/Status-incomplete%20prototype-b7791f?style=for-the-badge" />
   </p>
 </div>
+
+> [!IMPORTANT]
+> **Theoretical validation is complete; full-system flight and docking validation remain incomplete.** Multiple flight attempts have been unsuccessful. Unstable altitude data in the current RTK-GPS software setup is blocking safe docking experiments. See [Current Progress And Blocker](#current-progress-and-blocker).
 
 <p align="center">
   <img src=".github/assets/readme-hero.svg" alt="Mother-Ship Docking Drone System overview image" width="100%" />
@@ -37,9 +40,32 @@ This repository is the system-level workspace for an experimental aerial docking
 
 The central technical problem is **relative position acquisition**. A child drone cannot dock by knowing only global GPS coordinates. It needs to know where it is inside the mother drone's local docking frame, then convert that relative state into safe control experiments through PX4/MAVLink.
 
+## Current Progress And Blocker
+
+The project's theoretical work and validation of the underlying principles have been completed. A physical prototype has been built, and multiple flight tests have been attempted. However, those flight attempts have been unsuccessful, and **successful autonomous mid-air docking has not yet been demonstrated**. The project remains an unfinished research prototype.
+
+| Area | Current status |
+| --- | --- |
+| Theoretical design and validation | Complete. |
+| Physical prototype | Built; prototype photos and CAD source files are included. |
+| Full-system flight validation | Incomplete after multiple unsuccessful flight attempts. |
+| Autonomous mid-air docking | Not yet achieved; experiments are blocked by altitude-data instability. |
+
+### Altitude Instability
+
+The current blocker is unstable altitude data in the existing open-source RTK-GPS software setup used for this project. During stationary tests, **reported GPS altitude continued to fluctuate by approximately ±5 m even though the drone was not moving**. This instability prevents safe approach and docking experiments and has blocked completion of flight validation.
+
+The repository includes a [GPS drift logger and plotter](gps_drift_test/GPS_Drift_Logger.py) to record position data and inspect altitude variation. Completing the theoretical validation does not establish successful end-to-end flight performance; the altitude issue and integrated flight tests remain unresolved.
+
+### Remaining Work
+
+1. Resolve the altitude-data instability and verify stable height readings in stationary and controlled flight tests.
+2. Resume integrated approach and docking experiments once the altitude issue is resolved.
+3. Document successful end-to-end flight and docking results before marking the project complete.
+
 ## Core Idea: Relative Position First
 
-The docking stack is organized as a staged localization pipeline:
+The system design uses the following staged localization pipeline. It describes the intended docking sequence; the complete sequence has not yet been validated in flight.
 
 | Stage | Sensor / method | Purpose | Output |
 | --- | --- | --- | --- |
