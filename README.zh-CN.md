@@ -117,17 +117,26 @@ UWB 部分把到多个锚点的距离转换成局部 `x, y, z` 坐标，接近�
 
 ## 程序和工具
 
-我用 PX4/Pixhawk 做飞行控制，用 Python 做通信和数据分析，UWB 模块中用到了 ESP32-S3。定位相关的程序分在另外两个仓库里：
+我用 PX4/Pixhawk 做飞行控制，用 ESP32-S3 做通信和传感器接入，用 Python 做调试和数据分析。之前有一些整机程序放在 UWB 仓库里，现在把它们整理到了主项目中：
 
 | 仓库 | 内容 |
 | --- | --- |
-| 当前仓库 | 飞控通信实验、GPS 漂移工具、CAD 文件和项目照片。 |
-| [UWB-Project](https://github.com/Ha22yX/UWB-Project) | UWB 测距、滤波、位置解算、ESP32-S3 固件和可视化。 |
+| 当前仓库 | 母机/子机 ESP-NOW 固件、Pixhawk 通信测试、UWB 与飞控及 OpenMV 接入实验、调试工具、GPS 漂移工具、CAD 文件和项目照片。 |
+| [UWB-Project](https://github.com/Ha22yX/UWB-Project) | UWB 模块本身：测距、滤波、位置解算、锚点/标签固件、接线说明和 UWB 可视化。 |
 | [OpenMV-AprilTag](https://github.com/Ha22yX/OpenMV-AprilTag) | AprilTag 检测、位置与姿态输出，以及电脑端可视化工具。 |
+
+[固件说明](firmware/README.md)介绍了各个草图的用途，[迁移对照表](docs/repository-layout.md)记录了文件的原位置和新位置，也包括早期版本。
 
 主仓库中的一些文件：
 
 ```text
+firmware/docking/               母机和子机的 ESP-NOW 控制草图
+firmware/pixhawk/               Pixhawk TELEM / MAVLink 实验
+firmware/integration/           UWB 位置接入 Pixhawk 的跟随控制实验
+firmware/openmv/                ESP32 端的 OpenMV 串口与网页显示实验
+tools/                         SiK 数传调试和 AprilTag 位姿可视化
+archive/old-main/               早期整机原型和 RTK 转发脚本
+docs/repository-layout.md       仓库分工与迁移对照表
 Drone Control.py                 早期无人机控制实验
 Router_Comm_Test.py              路由通信测试
 UDP_MAVLink_Comm_Test.py         MAVLink 双向通信测试
@@ -154,6 +163,8 @@ pip install -r requirement.txt
 python serial_px4_udp_router.py --help
 python UDP_MAVLink_Comm_Test.py --help
 ```
+
+Arduino 草图的使用方式见[固件说明](firmware/README.md)。迁入的 AprilTag 三维查看器需要额外运行 `pip install -r tools/requirements.txt` 安装依赖；各个脚本的用途见[工具说明](docs/repository-layout.md#python-tools)。
 
 运行测试前，需要根据实际硬件确认端口、波特率、网络地址和 PX4 设置。这些程序仍处于研究阶段，用于飞行前需要完成台架检查、拆桨测试和失控保护设置。使用 CAD 文件加工零件前，也需要检查尺寸、材料和紧固件。
 

@@ -1,0 +1,5 @@
+numpy
+pyqtgraph
+pyserial>=3.5
+PyQt6
+PyOpenGL

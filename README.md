@@ -117,17 +117,26 @@ My next steps are to:
 
 ## Code and tools
 
-I use PX4/Pixhawk for flight control, Python for communication and analysis, and ESP32-S3 hardware in the UWB module. The localization code is split into two related repositories:
+I use PX4/Pixhawk for flight control, ESP32-S3 boards for communication and sensor integration, and Python for debugging and analysis. I originally kept some of the whole-drone code in the UWB repository. It now lives here, alongside the rest of the docking project:
 
 | Repository | What is in it |
 | --- | --- |
-| This repository | Flight-controller communication experiments, GPS drift tools, CAD files, and project photos. |
-| [UWB-Project](https://github.com/Ha22yX/UWB-Project) | UWB ranging, filtering, position solving, ESP32-S3 firmware, and visualization. |
+| This repository | Mother/child ESP-NOW firmware, Pixhawk communication tests, UWB-to-flight-controller and OpenMV integration, debugging tools, GPS drift tools, CAD files, and project photos. |
+| [UWB-Project](https://github.com/Ha22yX/UWB-Project) | The UWB module itself: ranging, filtering, position solving, anchor/tag firmware, wiring notes, and UWB visualization. |
 | [OpenMV-AprilTag](https://github.com/Ha22yX/OpenMV-AprilTag) | AprilTag detection, position and orientation output, and PC visualization tools. |
+
+The [firmware guide](firmware/README.md) explains the individual sketches. The [migration map](docs/repository-layout.md) records their old and new locations, including the older prototypes.
 
 Some useful files in this repository:
 
 ```text
+firmware/docking/               Mother and child ESP-NOW control sketches
+firmware/pixhawk/               Pixhawk TELEM / MAVLink experiments
+firmware/integration/           UWB position-to-Pixhawk follow-control experiment
+firmware/openmv/                ESP32-side OpenMV UART and web-display experiments
+tools/                         SiK radio debugging and AprilTag pose visualization
+archive/old-main/               Earlier whole-drone prototypes and RTK forwarding script
+docs/repository-layout.md       Repository responsibilities and migration map
 Drone Control.py                 Early drone-control experiment
 Router_Comm_Test.py              Router communication test
 UDP_MAVLink_Comm_Test.py         Bidirectional MAVLink communication test
@@ -154,6 +163,8 @@ The scripts are individual experiments. For example, `serial_px4_udp_router.py` 
 python serial_px4_udp_router.py --help
 python UDP_MAVLink_Comm_Test.py --help
 ```
+
+For Arduino sketches, start with the [firmware guide](firmware/README.md). For the moved AprilTag 3D viewer, install its additional dependencies with `pip install -r tools/requirements.txt`; the [tools notes](docs/repository-layout.md#python-tools) explain which script to use.
 
 Check ports, baud rates, network addresses, and PX4 settings against the actual hardware before running a test. These files are research code; flight use still requires bench checks, propeller-off tests, and failsafe setup. The CAD files also need dimensions, materials, and fasteners checked before fabrication.
 
