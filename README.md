@@ -21,38 +21,9 @@
   </p>
 </div>
 
-<p align="center">
-  <img src=".github/assets/readme-hero.svg" alt="Mother-Ship Docking Drone System overview: GPS, UWB, and vision for mother-frame relative positioning" width="100%" />
-</p>
-
 I am building a system that would let a smaller drone approach and dock with a larger “mother” drone in the air. This repository records my hardware, code, and experiments as I work toward that goal.
 
 **Current status:** I have completed the theoretical work and validation of the underlying principles. I have assembled the hardware and carried out preliminary flight tests, including a test with the two drones connected before takeoff. The complete autonomous approach and docking sequence is still unfinished.
-
-## Why I started this project
-
-I have thought drones were cool since I was a kid. I wanted to turn that interest into something I could design, build, and test myself, and getting two drones to meet and dock in the air gave me a problem I wanted to work on.
-
-The question that drew me in was how to get an accurate relative position estimate over a wide range of distances. For the docking system I want to build, relying on a single sensing method makes it difficult to balance coverage, precision, and reliability.
-
-GPS offers wide outdoor coverage, but ordinary GPS alone does not provide the precision I need for close docking. [RTK can improve GNSS accuracy](https://www.u-blox.com/en/technologies/rtk-real-time-kinematic) with correction data and suitable signal conditions. UWB and AprilTag vision can provide more precise local measurements for this task, but UWB needs the drone to stay within the anchors' useful range, and the camera needs a clear view of the marker at a usable distance.
-
-That is why I want to combine these methods: satellite positioning for the wider approach, UWB for relative positioning as the drones get closer, and vision for the final alignment. My goal is to explore how sensor fusion can keep the relative position estimate useful across those stages, using drone docking as the application. It connects a positioning problem I want to solve with something I have enjoyed since childhood.
-
-## What I am trying to build
-
-I wanted to explore how one drone could find another and line up with it while both are moving. For docking, the smaller drone needs to know its position relative to the mother drone's frame, including how far it is from the docking point.
-
-My design uses different sensors at different stages:
-
-| Stage | Method | What I use it for |
-| --- | --- | --- |
-| Initial approach | GPS / RTK-GPS | Bring the drones into the same area. |
-| Relative positioning | UWB anchors on the mother frame and a tag on the child drone | Calculate the child drone's position relative to the docking frame. |
-| Close-range alignment | OpenMV camera and AprilTag markers | Estimate the remaining position and angle offset. |
-| Connection | PX4 / MAVLink and an electromagnetic docking mechanism | Control the final approach and connect the two drones. |
-
-The UWB part turns distances from several anchors into a local `x, y, z` estimate. The camera is intended to refine the alignment close to the docking point. The complete sequence still needs to be validated in flight.
 
 ## Building the hardware
 
@@ -92,6 +63,35 @@ Before attempting docking between independently flying drones, I connected the t
 *The two drones during a flight test with them already connected before takeoff.*
 
 This photo records a preliminary test of flying together. Autonomous approach, alignment, and connection in the air still need their own complete validation.
+
+## What I am trying to build
+
+<p align="center">
+  <img src=".github/assets/readme-hero.svg" alt="Mother-Ship Docking Drone System overview: GPS, UWB, and vision for mother-frame relative positioning" width="100%" />
+</p>
+
+I wanted to explore how one drone could find another and line up with it while both are moving. For docking, the smaller drone needs to know its position relative to the mother drone's frame, including how far it is from the docking point.
+
+My design uses different sensors at different stages:
+
+| Stage | Method | What I use it for |
+| --- | --- | --- |
+| Initial approach | GPS / RTK-GPS | Bring the drones into the same area. |
+| Relative positioning | UWB anchors on the mother frame and a tag on the child drone | Calculate the child drone's position relative to the docking frame. |
+| Close-range alignment | OpenMV camera and AprilTag markers | Estimate the remaining position and angle offset. |
+| Connection | PX4 / MAVLink and an electromagnetic docking mechanism | Control the final approach and connect the two drones. |
+
+The UWB part turns distances from several anchors into a local `x, y, z` estimate. The camera is intended to refine the alignment close to the docking point. The complete sequence still needs to be validated in flight.
+
+## Why I started this project
+
+I have thought drones were cool since I was a kid. I wanted to turn that interest into something I could design, build, and test myself, and getting two drones to meet and dock in the air gave me a problem I wanted to work on.
+
+The question that drew me in was how to get an accurate relative position estimate over a wide range of distances. For the docking system I want to build, relying on a single sensing method makes it difficult to balance coverage, precision, and reliability.
+
+GPS offers wide outdoor coverage, but ordinary GPS alone does not provide the precision I need for close docking. [RTK can improve GNSS accuracy](https://www.u-blox.com/en/technologies/rtk-real-time-kinematic) with correction data and suitable signal conditions. UWB and AprilTag vision can provide more precise local measurements for this task, but UWB needs the drone to stay within the anchors' useful range, and the camera needs a clear view of the marker at a usable distance.
+
+That is why I want to combine these methods: satellite positioning for the wider approach, UWB for relative positioning as the drones get closer, and vision for the final alignment. My goal is to explore how sensor fusion can keep the relative position estimate useful across those stages, using drone docking as the application. It connects a positioning problem I want to solve with something I have enjoyed since childhood.
 
 ## Where I am now
 
